@@ -57,7 +57,11 @@ class Comment(models.Model):
     def __str__(self):
         return f'{self.user.user} Post'
 
-    
+    def save_comment(self):
+        self.user
+
+    def delete_comment(self):
+        self.delete()
 
 
    
