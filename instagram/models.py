@@ -9,6 +9,11 @@ class Profile(models.Model):
     user = models.OneToOneField(User,on_delete=models.CASCADE)
     profile_picture = models.ImageField(upload_to = 'images/')
     bio = models.TextField(max_length=500, default="Bio", blank=True)
+    def __str__(self):
+        return self.user.username
+    def save_profile(self):
+        self.save()    
+
 class Post(models.Model):
     image_name = models.CharField(max_length=80,blank=True)
     image_profile=models.ForeignKey('auth.User',on_delete=models.CASCADE)
@@ -40,6 +45,10 @@ class Comment(models.Model):
     post= models.ForeignKey(Post, on_delete=models.CASCADE)
     user= models.ForeignKey(Profile, on_delete=models.CASCADE)
     date = models.DateTimeField(auto_now_add=True, null=True)
+    def __str__(self):
+        return f'{self.user.user} Post'
+
+    
 
 
    
