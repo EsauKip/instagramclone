@@ -30,6 +30,15 @@ class Post(models.Model):
         return image
         
     def add_likes(self):
-        return self.likes.count()    
+        return self.likes.count()  
+class Comment(models.Model):
+    comment = models.TextField()
+    post= models.ForeignKey(Post, on_delete=models.CASCADE)
+    user= models.ForeignKey(Profile, on_delete=models.CASCADE)
+    date = models.DateTimeField(auto_now_add=True, null=True)
+
+
+   
+            
 
         
