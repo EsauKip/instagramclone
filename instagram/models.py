@@ -20,4 +20,16 @@ class Post(models.Model):
         return self.save()
     def delete_image(self):
         self.delete()
+    @classmethod
+    def search_image(cls, name):
+        return cls.objects.filter(image_name__image__name__icontains=name)
+    
+    @classmethod
+    def get_image_by_id(cls, image_id):
+        image = cls.objects.get(id=image_id)
+        return image
+        
+    def add_likes(self):
+        return self.likes.count()    
+
         
