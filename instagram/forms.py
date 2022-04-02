@@ -17,3 +17,7 @@ class UpdateProfileForm(forms.ModelForm):
     class Meta:
         model = Profile
         fields = ['bio']
+class  NewPostForm(forms.ModelForm):
+    class Meta:
+        model = Post
+        exclude = ['profile', 'likes','comments']
