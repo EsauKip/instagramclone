@@ -15,7 +15,13 @@ class Profile(models.Model):
         self.save()
     def delete_profile(self):
         self.delete()  
-        
+    def update_profile(cls, id):
+        Profile.objects.get(user_id=id)
+    
+    @classmethod
+    def search_profile(cls, name):
+        return cls.objects.filter(user__username__icontains=name).all()
+    
 
 class Post(models.Model):
     image_name = models.CharField(max_length=80,blank=True)
