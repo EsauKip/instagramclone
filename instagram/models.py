@@ -12,7 +12,10 @@ class Profile(models.Model):
     def __str__(self):
         return self.user.username
     def save_profile(self):
-        self.save()    
+        self.save()
+    def delete_profile(self):
+        self.delete()  
+        
 
 class Post(models.Model):
     image_name = models.CharField(max_length=80,blank=True)
