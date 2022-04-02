@@ -17,4 +17,7 @@ class Post(models.Model):
     def __str__(self):
         return self.image_name 
     def save_image(self):
-        return self.save()    
+        return self.save()
+    def delete_image(self):
+        self.delete()
+        
