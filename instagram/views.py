@@ -34,3 +34,22 @@ def signup(request):
     else:
         form = SignUpForm()
     return render(request, 'registration_form.html', {'form': form})
+@login_required(login_url='/accounts/login/')
+def new_post(request):
+    current_user = request.user
+    profile=request.GET.get('profile')
+    profile = Profile.objects.get(user = current_user)
+    if request.method == 'POST':
+        form = NewPostForm(request.POST, request.FILES)        
+        if form.is_valid():
+            image=form.cleaned_data.get('image')
+            caption=form.cleaned_data.get('caption')
+            post = Post(image = image,image_caption= caption, image_profile=profile)
+            post.save()  
+        else:
+            print(form.errors)
+        return redirect('index')
+    else:
+        form = NewPostForm()
+
+    return render(request, 'newpost.html')    
