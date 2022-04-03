@@ -53,3 +53,22 @@ def new_post(request):
         form = NewPostForm()
 
     return render(request, 'newpost.html')    
+@login_required(login_url='/accounts/login/')
+def add_comment(request,id):
+    post_comment = Comment.objects.filter(post= id)
+    images = Post.objects.filter(id=id).all()
+    current_user = request.user
+    profile = Profile.objects.get(user = current_user)
+    image = get_object_or_404(Post, id=id)
+    if request.method == 'POST':
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            comment = form.save(commit = False)
+            comment.post = image
+            comment.user = profile
+            comment.save()
+            return HttpResponseRedirect(request.path_info)
+    else:
+        form = CommentForm()
+
+    return render(request,'comments.html',{"form":form,"images":images,"comments":post_comment})
