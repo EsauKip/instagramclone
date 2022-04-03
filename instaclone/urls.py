@@ -20,7 +20,5 @@ from django.contrib.auth import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',include('instagram.urls')),
-    path('accounts/', include('registration.backends.simple.urls')),
     
-    path('logout/', views.logout_then_login),
 ]

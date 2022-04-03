@@ -11,6 +11,7 @@ urlpatterns=[
     path('profile/',views.show_profile, name='profile'),
     path('update/<int:id>',views.update_profile,name='update_profile'),
     path('signup/', views.signup, name='signup'),
+    
 
 ]
 if settings.DEBUG:
