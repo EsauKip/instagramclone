@@ -77,7 +77,7 @@ def show_profile(request):
     images= Post.objects.filter(image_profile=current_user.id).all
 
     return render(request, 'registration/profile.html',{"images":images} )
-    
+
 @login_required(login_url='/accounts/login/')    
 def update_profile(request,id):
     
@@ -90,4 +90,16 @@ def update_profile(request,id):
         form2.save()
         return HttpResponseRedirect("/profile")
     
-    return render(request, "registration/update_profile.html", {"form":form, "form2":form2})        
+    return render(request, "registration/update_profile.html", {"form":form, "form2":form2}) 
+@login_required(login_url='/accounts/login/')
+def search(request): 
+    if 'profile' in request.GET and request.GET['profile']:
+        user = request.GET.get("profile")
+
+        print(user)
+        results = Profile.search_profile(user)
+        message = f'profile'
+        return render(request, 'search.html',{'profiles': results,'message': message})
+    else:
+        message = "You haven't searched for anything,try again"
+    return render(request, 'search.html', {'message': message})           
