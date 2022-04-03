@@ -72,3 +72,8 @@ def add_comment(request,id):
         form = CommentForm()
 
     return render(request,'comments.html',{"form":form,"images":images,"comments":post_comment})
+def show_profile(request):
+    current_user= request.user
+    images= Post.objects.filter(image_profile=current_user.id).all
+
+    return render(request, 'registration/profile.html',{"images":images} )    
