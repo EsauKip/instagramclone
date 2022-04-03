@@ -1,30 +1,32 @@
 from django import forms
-from django.contrib.auth.models import User
-from instagram.models import Comment, Post, Profile
 from django.contrib.auth.forms import UserCreationForm
-class SignUpForm(UserCreationForm):
-    email = forms.EmailField()
-
-    class Meta:
-        model = User
-        fields = ['username', 'email', 'password1', 'password2']
-class UpdateUserForm(forms.ModelForm):
-    email = forms.EmailField(max_length=254, help_text='Required.')
-    class Meta:
-        model = User
-        fields = ('username', 'email')
-class UpdateProfileForm(forms.ModelForm):
-    class Meta:
-        model = Profile
-        fields = ['bio']
-class  NewPostForm(forms.ModelForm):
-    class Meta:
-        model = Post
-        exclude = ['profile', 'likes','comments']
-class CommentForm(forms.ModelForm):
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        self.fields['comment'].widget.attrs['placeholder'] = 'Write a comment'  
-    class Meta:
-        model = Comment
-        fields = ('comment',)      
+from .models import Profile,Comment,Image
+from django.contrib.auth.models import User
+# registering user
+class Registration(UserCreationForm):
+  email = forms.EmailField()
+  class Meta:
+    model = User
+    fields = ['username','email','password1','password2']
+    # user post class
+class postPhotoForm(forms.ModelForm):
+  class Meta:
+    model = Image
+    fields = ['photo','photo_name','photo_caption']
+class CommentsForm(forms.ModelForm):
+  def __init__(self,*args,**kwargs):
+    super().__init__(*args,**kwargs)
+    self.fields['comment'].widget=forms.TextInput()
+    self.fields['comment'].widget.attrs['placeholder']='Leave a comment...'
+  class Meta:
+    model = Comment
+    fields = ('comment',)
+class UpdateProfile(forms.ModelForm):
+  class Meta:
+    model = Profile
+    fields = ['profile_photo','bio']
+class UpdateUser(forms.ModelForm):
+  email = forms.EmailField()
+  class Meta:
+    model = User
+    fields = ['username','email']
