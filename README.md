@@ -1,4 +1,5 @@
 # instagramclone
+* run the app in incognito mode https://instagram-kip.herokuapp.com/
 # Description
 * It is simple instragram clone app which resembles instagram app, build using Django. Where a user can upload their images, posts and also view posts added by other people.
 # Author
