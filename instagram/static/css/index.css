@@ -1,0 +1,57 @@
+body{
+    
+    padding:0px;
+    margin:0px;
+    font-size: 20px;
+  }
+  .profile_photo {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+  }
+  .username {
+    color: black;
+  }
+ 
+  h2,h1 {
+    color: #141314;
+  }
+  .img-thumbnail {
+    cursor: pointer;
+    border-radius: 6px;
+  }
+  .gal-item {
+    float: left !important;
+  }
+  .footer a {
+    color: #500AD1 !important;
+  }
+  img {
+    width: 50%;
+  }
+  .pull-right, .subscribe {
+    color: white !important;
+  }
+  .menu {
+    color: white !important;
+  }
+  .name {
+    padding-top: 8%;
+    color: hsl(251, 96%, 29%);
+    text-align: center;
+  }
+  .slide {
+    width: auto;
+  }
+  ul{
+    list-style: none;
+  }
+
+
+
+
+
+
+
+
+

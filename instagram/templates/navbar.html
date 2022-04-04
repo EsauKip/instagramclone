@@ -1,15 +1,15 @@
 {% load bootstrap4 %}
-<div class="container-fluid">
+
   <nav class="navbar navbar-default">
     <div class="container">
       <div class="navbar-header">
         <a class="navbar-brand" href="{% url 'home' %}">
           <p style="color: black;font-size:39px; font-style: italic;"><i class="fa fa-instagram"  aria-hidden="true"></i> Instagram</p>
         </a>
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+        <button type="button" class="navbar-toggle collapsed" style="width:100px;" data-toggle="collapse"
           data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
           <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
+          <span class="icon-bar">Actions</span>
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
@@ -22,12 +22,12 @@
               <div class="input-group">
                 <input type="text" width="90%" class="form-control" placeholder="Search user..." name="search_user">
                 <div style="width:10% ;" class="input-group-btn btn-">
-                  <button class="btn btn-primary" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+                  <button class="btn btn-primary" type="submit"><i class="glyphicon glyphicon-search"></i>Search</button>
                 </div>
                 <div>
-                  <i class="fa fa-home"></i>
+                  <!-- <i class="fa fa-home"></i>
                   <i></i>
-                  <i class="fa fa-user-circle-o" aria-hidden="true"></i>
+                  <i class="fa fa-user-circle-o" aria-hidden="true"></i> -->
                   <!-- <i class="far fa-heart" aria-hidden="true"></i>
                   <i class="fas fa-heart" aria-hidden="true"></i> -->
                 </div>
@@ -59,7 +59,7 @@
           </li>
           {% else %}
           <li>
-            <a class='btn btn-danger' style="color: white;" href="/register">Sigup</a>
+            <a class='btn btn-danger' style="color: white;" href="/register">Signup</a>
           </li>
           <li>
             <a class='btn btn-danger' style="color: white; margin-left:5px" href="/login">Login</a>
@@ -72,3 +72,8 @@
 </div>
 </nav>
 </div>
+
+
+
+
+
